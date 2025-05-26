@@ -35,14 +35,15 @@ export default function RootLayout({ children }) {
           >
             {/* header */}
             <Header/>
-            <main className="  p-2 min-h-screen">
+            <main className="p-2">
 
             {children}
             </main>
             {/* footer */}
             <footer className=" bg-muted/60 py-12">
               <div className=" container mx-auto px-4 text-center text-gray-200">
-
+         
+              © 2025 AI-Career. All rights reserved.
               </div>
             </footer>
 

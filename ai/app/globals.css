@@ -122,30 +122,54 @@
 
 
 .grid-background {
-  position: fixed;
+  /* position: fixed; Fixed to the viewport */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255,255,255,0.1) 1px,
-    transparent 1px
-  ),
-  linear-gradient(to bottom , rgba(255,255,255,0.1) 1px,
-  transparent 1px);
+  background: 
+    linear-gradient(to right, rgba(29, 22, 22, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: -1;
 }
 
 .grid-background::before {
   content: "";
-  position: absolute;
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, transparent, rgba(61, 46, 46, 0.9));
-  z-index: -1; 
+  background: radial-gradient(circle, transparent, rgba(33, 43, 45, 0.9));
+  z-index: -1;
+}
+
+@layer utilities {
+  .gradient{
+    @apply bg-gradient-to-b from-gray-300 via-gray-200 to-gray-600
+  }
+
+  .gradient-title{
+    @apply gradient font-extrabold tracking-tighter text-transparent bg-clip-text pb-2 pr-2
+  }
+}
+
+.hero-image-wrapper {
+  perspective: 1000px;
+   max-width: 90vw; 
+ /* /  overflow-x: hidden;   */
+}
+.hero-image
+{
+  transform: rotateX(25deg) scale(1);
+  
+  transition: transform 0.5s ease-out;
+  will-change: transform;
+}
+
+.hero-image.scrolled {
+  transform: rotateX(0deg) scale(1) translateY(30px)
+  ;
 }
